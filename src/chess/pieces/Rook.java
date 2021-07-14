@@ -1,6 +1,7 @@
 package chess.pieces;
 
 import boardgame.Board;
+import boardgame.Position;
 import chess.ChessPiece;
 import chess.Color;
 
@@ -20,6 +21,51 @@ public class Rook extends ChessPiece {
 
     @Override
     public boolean[][] possibleMoves() {
-        return new boolean[getBoard().getRows()][getBoard().getColunms()];
+        boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColunms()];
+
+        Position p = new Position(0, 0);
+
+//      Cima
+        p.setValues(position.getRow()-1, position.getColumn());
+        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)){
+            mat[p.getRow()][p.getColumn()] = true;
+            p.setRow(p.getRow()-1);
+        }
+        if (getBoard().positionExists(p) && ifThereOpponentPiece(p)){
+            mat[p.getRow()][p.getColumn()] = true;
+        }
+
+//       Esquerda
+        p.setValues(position.getRow(), position.getColumn()-1);
+        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)){
+            mat[p.getRow()][p.getColumn()] = true;
+            p.setColumn(p.getColumn()-1);
+        }
+        if (getBoard().positionExists(p) && ifThereOpponentPiece(p)){
+            mat[p.getRow()][p.getColumn()] = true;
+        }
+
+//       Direita
+        p.setValues(position.getRow(), position.getColumn()+1);
+        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)){
+            mat[p.getRow()][p.getColumn()] = true;
+            p.setColumn(p.getColumn()+1);
+        }
+        if (getBoard().positionExists(p) && ifThereOpponentPiece(p)){
+            mat[p.getRow()][p.getColumn()] = true;
+        }
+
+//      Cima
+        p.setValues(position.getRow()+1, position.getColumn());
+        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)){
+            mat[p.getRow()][p.getColumn()] = true;
+            p.setRow(p.getRow()+1);
+        }
+        if (getBoard().positionExists(p) && ifThereOpponentPiece(p)){
+            mat[p.getRow()][p.getColumn()] = true;
+        }
+
+
+        return mat;
     }
 }
