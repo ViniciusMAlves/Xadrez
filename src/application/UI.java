@@ -100,7 +100,7 @@ public class UI {
                 System.out.print(ANSI_WHITE + piece + ANSI_RESET);
             }
             else {
-                System.out.print(ANSI_BLACK + piece + ANSI_RESET);
+                System.out.print(ANSI_YELLOW + piece + ANSI_RESET);
             }
         }
         System.out.print(" ");
@@ -117,7 +117,7 @@ public class UI {
         System.out.print(ANSI_RESET);
 
         System.out.print("Preto: ");
-        System.out.print(ANSI_BLACK);
+        System.out.print(ANSI_YELLOW);
         System.out.println(Arrays.toString(black.toArray()));
         System.out.print(ANSI_RESET);
     }
